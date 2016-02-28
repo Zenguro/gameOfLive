@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Game Of Life</title>
+        <link rel="stylesheet" href="css/gameOfLife.css">
+        <script src="js/gameOfLifeTests.js"></script>
+        <script src="js/golLib.js"></script>
+        <script src="js/gameOfLife.js"></script>
+    </head>
+    <body>
+
+        <section id="output">
+            <canvas id="golOutput">
+                Your browser does not support canvas. Please upgrade.
+            </canvas>
+        </section>
+
+        <section id="settings" class="hide">
+            <legend>Settings:</legend>
+            Setting1:<br>
+            <input type="text" name="setting1" value="setting1"><br>
+            Setting2:<br>
+            <input type="text" name="setting2" value="setting2"><br><br>
+
+        </section>
+        <section id="controls">
+            <!--<button id="previewButton">Preview</button>-->
+            <button id="startButton">START</button>
+            <button id="pauseButton">PAUSE</button>
+            <br>
+            <button id="restartButton">RESTART</button>
+        </section>
+
+
+    </body>
+</html>
