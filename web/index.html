@@ -4,11 +4,23 @@
         <meta charset="UTF-8">
         <title>Game Of Life</title>
         <link rel="stylesheet" href="css/gameOfLife.css">
-        <script src="js/gameOfLifeTests.js"></script>
+        <script src="js/gameOfLifeObjects.js"></script>
         <script src="js/golLib.js"></script>
         <script src="js/gameOfLife.js"></script>
     </head>
     <body>
+        <section id="settings">
+            <label for="startObject">Start Object:</label>
+            <select id="startObject">
+                <option value="singleCell">Single Cell</option>
+                <option value="blinker">Blinker</option>
+                <option value="beacon">Beacon</option>
+                <option value="toad">Toad</option>
+                <option value="pulsar">Pulsar</option>
+                <option value="lightWeightSpaceShip">Lightweight Space Ship</option>
+                <option value="glider" selected>Glider</option>
+            </select>
+        </section>
 
         <section id="output">
             <canvas id="golOutput">
@@ -16,19 +28,10 @@
             </canvas>
         </section>
 
-        <section id="settings" class="hide">
-            <legend>Settings:</legend>
-            Setting1:<br>
-            <input type="text" name="setting1" value="setting1"><br>
-            Setting2:<br>
-            <input type="text" name="setting2" value="setting2"><br><br>
-
-        </section>
         <section id="controls">
             <!--<button id="previewButton">Preview</button>-->
             <button id="startButton">START</button>
             <button id="pauseButton">PAUSE</button>
-            <br>
             <button id="restartButton">RESTART</button>
         </section>
 

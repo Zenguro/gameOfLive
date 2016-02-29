@@ -2,11 +2,12 @@ var startButtonId = "startButton";
 var restartButtonId = "restartButton";
 var pauseButtonId = "pauseButton";
 var canvasContainerId = "output";
+var startObjectSelectId = "startObject";
 
 var canvasId = "golOutput";
 var canvasContext;
 
-var gol;
+var gol = null;
 var intervalId = null;
 
 window.onload = init;
@@ -14,13 +15,16 @@ window.onload = init;
 var boardDimensions = {x: 16, y: 16};
 var cellSize = 15;
 var speed = 250;
-var testFunction = gliderTest;
 
 function init() {
-    gol = new GOL(boardDimensions, testFunction);
-
     initUI();
     initCanvas();
+}
+
+function getStartObject() {
+  var testFunctionSelectObj = document.getElementById(startObjectSelectId);
+  var selectedIndex = testFunctionSelectObj.selectedIndex;
+  return testFunctionMapping[testFunctionSelectObj[selectedIndex].value];
 }
 
 function initCanvas() {
@@ -58,13 +62,17 @@ function pause() {
 }
 
 function restart() {
-    gol = new GOL(boardDimensions, testFunction);
+    gol = new GOL(boardDimensions, getStartObject());
     clearInterval(intervalId);
     intervalId = null;
     start();
 }
 
 function start() {
+    if(gol == null){
+      gol = new GOL(boardDimensions, getStartObject());
+    }
+
     if (intervalId == null) {
         draw(gol.boardArrayWithoutEdges());
         intervalId = setInterval(processNextGeneration, speed);

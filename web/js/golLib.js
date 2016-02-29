@@ -1,13 +1,13 @@
-function GOL(boardDimensions, testFunction) {
+function GOL(boardDimensions, startObjectFunction) {
     this.color = {
         dead: "white",
         alive: "black"
     };
 
-    if(typeof testFunction !== "undefined"){
-        this.testFunction = testFunction;
+    if(typeof startObjectFunction !== "undefined"){
+        this.initWithStartObjectFunction = startObjectFunction;
     } else {
-        this.testFunction = null;
+        this.initWithStartObjectFunction = null;
     }
 
 
@@ -76,8 +76,8 @@ function GOL(boardDimensions, testFunction) {
         this.boardArray = create2dArray(this.modelDimensions.x, this.modelDimensions.y);
         //complete board is dead (dead = false)
         init2dArray(this.boardArray, false);
-        if(this.testFunction != null) {
-            this.testFunction(this);
+        if(this.initWithStartObjectFunction != null) {
+            this.initWithStartObjectFunction(this);
         }
     };
 
