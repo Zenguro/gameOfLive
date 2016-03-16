@@ -5,9 +5,9 @@ function GOL(boardDimensions, startObjectFunction) {
     };
 
     if(typeof startObjectFunction !== "undefined"){
-        this.initWithStartObjectFunction = startObjectFunction;
+        this.startObjectFunction = startObjectFunction;
     } else {
-        this.initWithStartObjectFunction = null;
+        this.startObjectFunction = null;
     }
 
 
@@ -72,12 +72,10 @@ function GOL(boardDimensions, startObjectFunction) {
 
 
     this.init = function init() {
-        //initialize PlayField with additional border which is dead.
-        this.boardArray = create2dArray(this.modelDimensions.x, this.modelDimensions.y);
-        //complete board is dead (dead = false)
-        init2dArray(this.boardArray, false);
-        if(this.initWithStartObjectFunction != null) {
-            this.initWithStartObjectFunction(this);
+        //initialize PlayField with additional border which is dead. (dead = false)
+        this.boardArray = create2dArray(this.modelDimensions.x, this.modelDimensions.y, false);
+        if(this.startObjectFunction != null) {
+            this.startObjectFunction(this);
         }
     };
 
@@ -105,7 +103,7 @@ function create2dArray(numberOfRows, numberOfColumns, initValue) {
         array[i] = new Array(numberOfColumns);
     }
     if (typeof initValue !== "undefined") {
-        init2dArray(array, false);
+        init2dArray(array, initValue);
     }
     return array;
 }
